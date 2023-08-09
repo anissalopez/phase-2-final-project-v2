@@ -88,6 +88,15 @@ weekData th{
   margin-left: 10px
 }
 
+.loginIcon{
+    border-radius: 50%;
+    border:  solid;
+    padding: 5px;
+    font-size: 30px;
+    margin-right:10px;
+
+}
+
 
 
 

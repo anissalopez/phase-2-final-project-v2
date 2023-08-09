@@ -60,7 +60,7 @@ function NewUserForm({ updateHabitList, habits, handleClick }){
 
     function handleSubmit(e){
     e.preventDefault();
-    console.log(e)
+
 
     if(validateNewUser()){
         fetch('https://habittracker-rvvt.onrender.com/habits', {
@@ -80,15 +80,13 @@ function NewUserForm({ updateHabitList, habits, handleClick }){
     }
     }
 
-    function handleClick(){
-      
-    }
 
     return(
         <>
         <NavBar ></NavBar>
+  
         <Container id="formContainer" className="mt-5 d-grid h-75 text-center">
-        <h2 className="mt-5">Sign Up</h2>
+        <h2 className="pt-5">Sign Up</h2>
         <Form id="userForm"  onSubmit={handleSubmit}> 
             <InputGroup className="mb-2" size="md">
             <InputGroup.Text id="basic-addon1"><BsPerson /></InputGroup.Text>
@@ -100,7 +98,7 @@ function NewUserForm({ updateHabitList, habits, handleClick }){
             </InputGroup>
             <InputGroup className="mb-2" size="md">
             <InputGroup.Text id="basic-addon1"><CiLock /></InputGroup.Text>
-            <Form.Control  type="text" placeholder="minimum 6 characters" value={form.password} name="password" onChange={handleChange} />
+            <Form.Control  type="text" placeholder="minimum 8 characters" value={form.password} name="password" onChange={handleChange} />
             </InputGroup>
             <Button variant="primary" className="mt-3 mb-2" type="submit">
             Submit
