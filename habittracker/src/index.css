@@ -1,13 +1,102 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  min-height: 100vh;
+  display: grid;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#formContainer{
+  place-items: center center;
 }
+
+.weekData td {
+  align-items: center;
+  text-align: center;
+  width:90px;
+}
+
+weekData tr{
+  height: 60px;
+}
+
+.weekData th{
+  text-align:center;
+}
+
+.habitDisplay.table{
+  width: 200px;
+}
+
+.custom{
+  width: 39.8px;
+  height: 37.81px;
+}
+
+.monthHeader{
+  text-align:center;
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+.dateHeader{
+  text-align: center;
+  padding-top: 100px;
+}
+
+.weekRange{
+  display:flex;
+  text-align:center;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightArrow{
+  padding: 25px; 
+}
+
+.leftArrow{
+  padding: 25px;
+ 
+}
+
+.monthBtn{
+  height: 20px;
+  width: 20px;
+}
+
+#habitForm{
+  max-width: 330px;
+}
+
+.monthlyData{
+  display: grid;
+
+}
+
+.navigation{
+  grid-template-columns: auto;
+}
+
+.navIcon{
+  margin-right:10px;
+}
+
+.navText{
+  margin-right:10px;
+}
+
+.signUp{
+  margin-left: 10px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
