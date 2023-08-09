@@ -5,10 +5,17 @@ dotenv.config();
 const PORT = process.env.PORT  || 4000
 const app = express();
 
+const cors = require("cors");
+app.use(cors());
+
+
+
 
 app.get("/", (req, res) => {
     res.send("API is running...")
 });
+
+
 
 
 app.get("/habitList", (req, res) => {
@@ -21,5 +28,6 @@ app.get("/habitList/:id", (req, res) =>{
 })
 
 
-console.log(module)
+
+
 app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)})

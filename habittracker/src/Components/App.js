@@ -11,6 +11,7 @@ import NewUserForm from "./NewUserForm";
 import Preferences from "./Preferences";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
+import axios from "axios";
 
 
 
@@ -22,13 +23,22 @@ function App() {
 
 
 
+  useEffect(() => {
+
+    fetch("http://localhost:4000/habitList")
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+
+
+
+    }, [])
 
 
   const changeWeek = () => {
     return (
         <div className="row">
-          <div className= "col" onClick={() => changeWeekHandle("prev")}><FaArrowLeft size="lg" className= "leftArrow fa-pull-left" /></div>
-          <div className="col" onClick={() => changeWeekHandle("next")}><FaArrowRight size="lg" className="rightArrow fa-pull-right" /></div>
+          <div className= "col" onClick={() => changeWeekHandle("prev")}><FaArrowLeft className= "leftArrow fa-pull-left" /></div>
+          <div className="col" onClick={() => changeWeekHandle("next")}><FaArrowRight className="rightArrow fa-pull-right" /></div>
         </div>
     );
   };
