@@ -6,7 +6,7 @@ import NavBar from "./NavBar"
 import { BsPerson } from "react-icons/bs";
 import { CiMail, CiLock } from "react-icons/ci"
  
-function NewUserForm({ updateHabitList, habits, handleClick }){
+function NewUserForm({ updateHabitList, habits,  }){
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -58,6 +58,10 @@ function NewUserForm({ updateHabitList, habits, handleClick }){
     return newUser;
 }
 
+
+    function handleClick(){
+        navigate("./login")
+    }
     function handleSubmit(e){
     e.preventDefault();
 
@@ -74,7 +78,7 @@ function NewUserForm({ updateHabitList, habits, handleClick }){
         .then(resp => resp.json())
         .then((data) => {
             updateHabitList(data)
-            navigate('/')
+            navigate('/habits')
         }); 
         
     }

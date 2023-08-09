@@ -7,11 +7,10 @@ import WeekData from "./WeekData";
 import {subWeeks, addWeeks} from "date-fns";
 import { FaArrowRight, FaArrowLeft} from 'react-icons/fa';
 import MonthlyData from "./MonthlyData";
-import Login from "./Login";
 import NewUserForm from "./NewUserForm";
 import Preferences from "./Preferences";
-import { MdTurnedIn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 
 
 
@@ -20,18 +19,7 @@ function App() {
 
   const [habits, setHabits] = useState([]);
   const [activeDay, setActiveDay] = useState(new Date());
-  const [token, setToken] = useState();
 
-  if(!token){
-    return <NewUserForm setToken={setToken} handleClick={handleClick} />
-  }
-
-  
-  
-  function handleClick(){
-    setToken(true)
-    navigate("/Login")
-  }
 
 
 
@@ -89,19 +77,16 @@ function App() {
 
   return (
      <>
-
       <Navigation />
         <Routes>
-  
+          <Route path="/" element={<NewUserForm />}/>
           <Route path="/preferences" element={<Preferences />} />
-          <Route path="/AddHabit" element={<HabitForm />} />
-          <Route exact path="/WeekData" element ={<WeekData changeWeek={changeWeek}  activeDay={activeDay} habits={habits}/>} />
-          <Route exact path="/MonthlyData" element ={<MonthlyData setActiveDay={setActiveDay} changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
-          <Route exact path="/" element ={<HabitContainer changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
-          <Route exact path="/NewUserForm" element ={<NewUserForm updateHabitList={updateHabitList} habits={habits} />} />
-          <Route exact path="/Login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/addhabit" element={<HabitForm />} />
+          <Route exact path="/weekdata" element ={<WeekData changeWeek={changeWeek}  activeDay={activeDay} habits={habits}/>} />
+          <Route exact path="/monthlydata" element ={<MonthlyData setActiveDay={setActiveDay} changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
+          <Route exact path="/habits" element ={<HabitContainer changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
         </Routes>
-
         </>
   
   );
