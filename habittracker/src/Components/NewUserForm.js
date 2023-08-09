@@ -1,14 +1,16 @@
 import React, {useState} from "react";
 import {Form, Container, Button} from "react-bootstrap";
+import InputGroup from 'react-bootstrap/InputGroup'
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar"
-
+import { BsPerson } from "react-icons/bs";
+import { CiMail, CiLock } from "react-icons/ci"
+ 
 function NewUserForm({ updateHabitList, habits }){
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
-         firstName: "",
-        lastName: "",
+        fullname: "",
         id: "",
         password: "",
         habits: []
@@ -26,15 +28,11 @@ function NewUserForm({ updateHabitList, habits }){
     function validateNewUser(){
         let newUser = true;
 
-        if(form.firstName === "" || form.firstName === null){
+        if(form.fullname === "" || form.fullname === null){
             newUser = false;
             alert("please enter a valid first name")
          }
 
-        if(form.lastName === "" || form.lastName === null){
-            newUser = false;
-            alert("please enter a valid last name")
-         }
         if(form.id === "" || form.id === null){
             newUser = false;
             alert("please enter a valid username")
@@ -80,24 +78,32 @@ function NewUserForm({ updateHabitList, habits }){
     }
 
     return(
-        <Container id="formContainer" className="mt-5 d-grid h-75">
+        <>
         <NavBar ></NavBar>
-        <h2 className="mt-5">Welcome to Habit App</h2>
-        <Form id="userForm" className="mt-3  w-60" onSubmit={handleSubmit}>
-            <Form.Label className="mb-2 mt-2 fs-5 text-left">First Name </Form.Label>
-            <Form.Control className="mb-2" type="text" placeholder="enter first name" value={form.firstName} name="firstName" onChange={handleChange}/>
-            <Form.Label className="mb-2 mt-2 fs-5">Last Name </Form.Label>
-            <Form.Control className="mb-2" type="text" placeholder="please last name" value={form.lastName} name="lastName" onChange={handleChange}/>
-            <Form.Label className="mb-2 fs-5 mt-2">Username </Form.Label>
-            <Form.Control className="mb-2" type="username" placeholder="please username" value={form.id} name="id" onChange={handleChange}/>
-            <Form.Label className="mb-2 fs-5 mt-2">Password </Form.Label>
-            <Form.Control className="mb-2" type="password" placeholder="enter password" value={form.password} name="password" onChange={handleChange}/>
+        <Container id="formContainer" className="mt-5 d-grid h-75 text-center">
+        <h2 className="mt-5">Sign Up</h2>
+        <Form id="userForm"  onSubmit={handleSubmit}> 
+            <InputGroup className="mb-2" size="md">
+            <InputGroup.Text id="basic-addon1"><BsPerson /></InputGroup.Text>
+            <Form.Control  type="text" placeholder="enter name" value={form.fullname} name="fullname" onChange={handleChange} />
+            </InputGroup>  
+            <InputGroup className="mb-2" size="md">
+            <InputGroup.Text id="basic-addon1"><CiMail /></InputGroup.Text>
+            <Form.Control type="text" placeholder="enter email" value={form.id} name="id" onChange={handleChange} />
+            </InputGroup>
+            <InputGroup className="mb-2" size="md">
+            <InputGroup.Text id="basic-addon1"><CiLock /></InputGroup.Text>
+            <Form.Control  type="text" placeholder="minimum 6 characters" value={form.password} name="password" onChange={handleChange} />
+            </InputGroup>
+            <InputGroup className="text-center">
             <Button variant="primary" className="mt-2 mb-2" type="submit">
             Submit
             </Button>
+          </InputGroup>
         </Form>
-        <p>Have an account? <button onClick={handleClick}>Login</button></p>
+        <p className="text-center">Have an account? <button onClick={handleClick}>Login</button></p>
         </Container>
+        </>
     )
 }
 
