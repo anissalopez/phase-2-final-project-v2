@@ -6,7 +6,7 @@ import NavBar from "./NavBar"
 import { BsPerson } from "react-icons/bs";
 import { CiMail, CiLock } from "react-icons/ci"
  
-function NewUserForm({ updateHabitList, habits }){
+function NewUserForm({ updateHabitList, habits, handleClick }){
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -42,6 +42,13 @@ function NewUserForm({ updateHabitList, habits }){
             alert("please enter a valid password")
         }
 
+        if(form.password.length < 8){
+            newUser = false;
+            alert("please enter minimum of 8 characters")
+        }
+
+
+
     /* need to add functionality to create an alert if username is already taken habits.forEach((habit) => {
         if(form.username === habit.id){
             newUser = false;
@@ -74,7 +81,7 @@ function NewUserForm({ updateHabitList, habits }){
     }
 
     function handleClick(){
-        navigate('/Login')
+      
     }
 
     return(
@@ -95,13 +102,11 @@ function NewUserForm({ updateHabitList, habits }){
             <InputGroup.Text id="basic-addon1"><CiLock /></InputGroup.Text>
             <Form.Control  type="text" placeholder="minimum 6 characters" value={form.password} name="password" onChange={handleChange} />
             </InputGroup>
-            <InputGroup className="text-center">
-            <Button variant="primary" className="mt-2 mb-2" type="submit">
+            <Button variant="primary" className="mt-3 mb-2" type="submit">
             Submit
             </Button>
-          </InputGroup>
         </Form>
-        <p className="text-center">Have an account? <button onClick={handleClick}>Login</button></p>
+        <p>Have an account? <button onClick={handleClick}>Login</button></p>
         </Container>
         </>
     )

@@ -10,19 +10,28 @@ import MonthlyData from "./MonthlyData";
 import Login from "./Login";
 import NewUserForm from "./NewUserForm";
 import Preferences from "./Preferences";
+import { MdTurnedIn } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 
 
 function App() {
+  const navigate = useNavigate()
 
   const [habits, setHabits] = useState([]);
   const [activeDay, setActiveDay] = useState(new Date());
   const [token, setToken] = useState();
 
   if(!token){
-    return <NewUserForm setToken={setToken} />
+    return <NewUserForm setToken={setToken} handleClick={handleClick} />
   }
+
   
   
+  function handleClick(){
+    setToken(true)
+    navigate("/Login")
+  }
 
 
 
@@ -90,6 +99,7 @@ function App() {
           <Route exact path="/MonthlyData" element ={<MonthlyData setActiveDay={setActiveDay} changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
           <Route exact path="/" element ={<HabitContainer changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
           <Route exact path="/NewUserForm" element ={<NewUserForm updateHabitList={updateHabitList} habits={habits} />} />
+          <Route exact path="/Login" element={<Login />} />
         </Routes>
 
         </>
