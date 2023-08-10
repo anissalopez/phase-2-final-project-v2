@@ -1,14 +1,21 @@
-const express = require('express');
-const habitList = require("./habitList");
-const dotenv = require('dotenv');
-dotenv.config();
-const PORT = process.env.PORT  || 4000
-const app = express();
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js"
 
-const cors = require("cors");
+
+
+dotenv.config();
+connectDB();
+
+
+
+const app = express();
+app.use(express.json());
 app.use(cors());
 
-
+app.use('/data/users', userRoutes)
 
 
 app.get("/", (req, res) => {
@@ -18,16 +25,12 @@ app.get("/", (req, res) => {
 
 
 
-app.get("/habitList", (req, res) => {
-    res.json(habitList)
-})
-
-app.get("/habitList/:id", (req, res) =>{
-    const habit = habitList.find((n) => n.id === req.params.id)
-    res.send(habit)
-})
 
 
 
+
+
+
+const PORT = process.env.PORT  || 4000
 
 app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)})

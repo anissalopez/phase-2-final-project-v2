@@ -25,9 +25,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch("http://localhost:4000/habitList")
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+
 
 
 
