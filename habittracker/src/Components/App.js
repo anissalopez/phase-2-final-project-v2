@@ -7,7 +7,7 @@ import WeekData from "./WeekData";
 import {subWeeks, addWeeks} from "date-fns";
 import { FaArrowRight, FaArrowLeft} from 'react-icons/fa';
 import MonthlyData from "./MonthlyData";
-import NewUserForm from "./NewUserForm";
+import Signup from "./Signup";
 import Preferences from "./Preferences";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
@@ -87,7 +87,7 @@ function App() {
      <>
       <Navigation />
         <Routes>
-          <Route path="/" element={<NewUserForm />}/>
+          <Route path="/" element={<Signup />}/>
           <Route path="/preferences" element={<Preferences />} />
           <Route path="/login" element={<Login />} />
           <Route path="/addhabit" element={<HabitForm />} />

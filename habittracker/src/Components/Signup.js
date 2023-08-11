@@ -6,7 +6,7 @@ import NavBar from "./NavBar"
 import { BsPerson } from "react-icons/bs";
 import { CiMail, CiLock } from "react-icons/ci"
  
-function NewUserForm({ updateHabitList, habits,  }){
+function Signup({ updateHabitList, habits,  }){
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -108,10 +108,10 @@ function NewUserForm({ updateHabitList, habits,  }){
             Submit
             </Button>
         </Form>
-        <p>Have an account? <button onClick={handleClick}>Login</button></p>
+        <p>Have an account? <Button variant="secondary" onClick={handleClick}>Login</Button></p>
         </Container>
         </>
     )
 }
 
-export default NewUserForm;
+export default Signup;
