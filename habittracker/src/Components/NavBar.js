@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {FaCalendar, FaPlus} from 'react-icons/fa';
-import { BsHouse, BsPerson, BsBarChartFill, BsPlus } from 'react-icons/bs';
+import { BsHouse, BsPerson, BsBarChartFill } from 'react-icons/bs';
 
 
 export default function Navigation() {

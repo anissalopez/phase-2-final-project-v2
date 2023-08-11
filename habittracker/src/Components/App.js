@@ -1,7 +1,7 @@
 import HabitForm from "./HabitForm";
 import HabitContainer from "./HabitContainer";
 import React, {useState, useEffect} from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "./NavBar";
 import WeekData from "./WeekData";
 import {subWeeks, addWeeks} from "date-fns";
@@ -12,6 +12,7 @@ import Preferences from "./Preferences";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import axios from "axios";
+
 
 
 
@@ -84,9 +85,9 @@ function App() {
 
 
   return (
-     <>
-      <Navigation />
-        <Routes>
+    <>
+    <Navigation />
+     <Router>
           <Route path="/" element={<Signup />}/>
           <Route path="/preferences" element={<Preferences />} />
           <Route path="/login" element={<Login />} />
@@ -94,8 +95,8 @@ function App() {
           <Route exact path="/weekdata" element ={<WeekData changeWeek={changeWeek}  activeDay={activeDay} habits={habits}/>} />
           <Route exact path="/monthlydata" element ={<MonthlyData setActiveDay={setActiveDay} changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
           <Route exact path="/habits" element ={<HabitContainer changeWeek={changeWeek}  changeWeekHandle={changeWeekHandle} activeDay={activeDay} removeHabit={removeHabit} updateCompletedHabits={updateCompletedHabits} habits={habits}/>} />
-        </Routes>
-        </>
+      </Router>
+    </>
   
   );
 };
