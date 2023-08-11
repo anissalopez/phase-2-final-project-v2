@@ -9,7 +9,7 @@ import { register } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
  
-function Signup({ updateHabitList, habits,  }){
+function Signup({ updateHabitList, habits, history }){
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -21,9 +21,18 @@ function Signup({ updateHabitList, habits,  }){
     const userRegister = useSelector((state) => state.userRegister);
     const { loading, error, userInfo } = userRegister;
 
+    useEffect(() => {
+        if (userInfo) {
+          navigate("/addhabit");
+        }
+      }, [userInfo]);
+
     const handleSubmit = (e) => {
        e.preventDefault();
-       dispatch(register(name, email, password));
+       if(password.length < 8){
+        setMessage("please enter minimum of 8 characters")
+       }
+       else dispatch(register(name, email, password));
       };
 
     const handleClick = () => navigate("./Login")
@@ -37,15 +46,15 @@ function Signup({ updateHabitList, habits,  }){
         {loading && <Loading />}
         <h2 className="pt-5">Sign Up</h2>
         <Form id="userForm"  onSubmit={handleSubmit}> 
-            <InputGroup className="mb-2" size="md" controlId="name">
+            <InputGroup className="mb-2" size="md" >
             <InputGroup.Text id="basic-addon1"><BsPerson /></InputGroup.Text>
             <Form.Control  type="name" value={name} placeholder="enter name" onChange={(e) => setName(e.target.value)} />
             </InputGroup>  
-            <InputGroup className="mb-2" size="md" controlId="formBasicEmail">
+            <InputGroup className="mb-2" size="md" >
             <InputGroup.Text id="basic-addon1"><CiMail /></InputGroup.Text>
             <Form.Control type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </InputGroup>
-            <InputGroup className="mb-2" size="md" controlId="formBasicPassword">
+            <InputGroup className="mb-2" size="md" >
             <InputGroup.Text id="basic-addon1"><CiLock /></InputGroup.Text>
             <Form.Control  type="password" placeholder="minimum 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} />
             </InputGroup>

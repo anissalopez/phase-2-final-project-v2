@@ -13,19 +13,20 @@ function Login({ }){
 
     const [email, setEmail] = useState("");
     const [password, setPassWord] = useState("");
-    const { loading, error, userInfo } = userLogin;
+   
 
     const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.userLogin);
+    const { loading, error, userInfo } = userLogin;
 
-    
+
     
   
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(login(email, password));
+     dispatch(login(email, password))
     };
 
 
@@ -50,7 +51,7 @@ function Login({ }){
             </InputGroup>
             <InputGroup className="mb-2" size="md">
             <InputGroup.Text id="basic-addon1"><CiLock /></InputGroup.Text>
-            <Form.Control  type="text" placeholder="enter password" value={password} name="password" onChange={(e)=>setPassWord(e.target.value)} />
+            <Form.Control  type="password" placeholder="enter password" value={password} name="password" onChange={(e)=>setPassWord(e.target.value)} />
             </InputGroup>
             <Button type="submit" variant="primary" className="mt-3 mb-2">
              Login

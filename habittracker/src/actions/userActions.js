@@ -23,7 +23,7 @@ import {
       };
   
       const { data } = await axios.post(
-        "/api/users/login",
+        "http://localhost:4000/data/users/login",
         { email, password },
         config
       );
@@ -58,7 +58,7 @@ import {
       };
   
       const { data } = await axios.post(
-        "/data/users",
+        "http://localhost:4000/data/users",
         { name, password, email  },
         config
       );

@@ -4,42 +4,14 @@ import { Button, Container, Form }from 'react-bootstrap'
 
 function HabitForm({ updateHabitList, currentUserHabits, habits}){
     const [habit, setHabit] = useState("")
-
-
-    console.log(currentUserHabits)
-
-
-
     const navigate = useNavigate();
+    const handleSubmit = () => {
 
-    function handleSubmit(e){
-
-
-        console.log(currentUserHabits)
-
- 
-        e.preventDefault();
-        
-
-       /* fetch(`https://habittracker-rvvt.onrender.com/habits/${user}`, {
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json",
-                "accept": "application/json"
-            },
-            body: JSON.stringify()
-        })
-        .then(resp => resp.json())
-        .then((data) => {
-           console.log(data)
-        }); 
-
-        */
-    };
+    }
 
     return(
-        <Container id="formContainer" className="d-grid h-75">
-        <Form id="habitForm" className="text-center w-60" onSubmit={handleSubmit}>
+        <Container id="formContainer" className="d-grid h-75 mt-5">
+        <Form id="habitForm" className="text-center w-60 pt-5 mt-5" onSubmit={handleSubmit}>
             <Form.Group  controlId="habitForm">
             <Form.Label className="mb-4 fs-4">Add Habit</Form.Label>
         
