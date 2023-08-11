@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button, InputGroup  } from "react-bootstrap";
+import { CiMail, CiLock } from "react-icons/ci"
 
 function Login({ }){
 
     const [username, setUserName] = useState("");
     const [password, setPassWord] = useState("");
     
-
-
     const navigate = useNavigate();
 
     function validateLogin(){
@@ -31,35 +30,31 @@ function Login({ }){
 
      if(validateLogin()){
 
-
-
+     }
     }
-    };
-
-
- 
-
+    
 
     function newUserHandler(){
-        navigate('/NewUserForm')
+        navigate('/')
     }
 
-
-
     return(
-        <Container id="formContainer" className="d-grid h-75">
-        <Form id="userForm" className="text-center w-60" onSubmit={handleSubmit}>
-            <Form.Label className="mb-4 fs-4">User Name </Form.Label>
-            <Form.Control className="mb-4" type="text" placeholder="please enter a username" value={username} onChange={(e)=>setUserName(e.target.value)}/>
-            <Form.Label className="mb-4 fs-4">Password </Form.Label>
-            <Form.Control className="mb-4" type="text" placeholder="please enter a password" value={password} onChange={(e)=>setPassWord(e.target.value)}/>
-            <Button variant="primary" className="p-2" type="submit">
-            Submit
+        <Container id="formContainer" className="mt-5 d-grid h-75 text-center">
+        <h2 className="pt-5">Login</h2>
+        <Form id="userForm"  onSubmit={handleSubmit}> 
+            <InputGroup className="mb-2" size="md">
+            <InputGroup.Text id="basic-addon1"><CiMail /></InputGroup.Text>
+            <Form.Control type="text" placeholder="enter email" value={username} name="username" onChange={(e)=>setUserName(e.target.value)}/>
+            </InputGroup>
+            <InputGroup className="mb-2" size="md">
+            <InputGroup.Text id="basic-addon1"><CiLock /></InputGroup.Text>
+            <Form.Control  type="text" placeholder="enter password" value={password} name="password" onChange={(e)=>setPassWord(e.target.value)} />
+            </InputGroup>
+            <Button variant="primary" className="mt-3 mb-2">
+             Login
             </Button>
-            <Button variant="primary" className="p-2 signUp" onClick={newUserHandler}>
-            Sign Up
-           </Button>
         </Form>
+        <p>Don't have an ccount? <Button variant="secondary" onClick={newUserHandler}>Sign Up</Button></p>
         </Container>
     );
 };

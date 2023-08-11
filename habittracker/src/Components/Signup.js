@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import {Form, Container, Button} from "react-bootstrap";
-import InputGroup from 'react-bootstrap/InputGroup'
+import {Form, Container, Button, InputGroup} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar"
 import { BsPerson } from "react-icons/bs";
