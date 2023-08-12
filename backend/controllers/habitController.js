@@ -4,7 +4,7 @@ import asyncHandler from "express-async-handler";
 // @desc    Get logged in user notes
 // @route   GET /api/notes
 // @access  Private
-const getHabits = asyncHandler(async (req, res) => {
+export const getHabits = asyncHandler(async (req, res) => {
   const habits = await Habit.find({ user: req.user._id });
   res.json(habits);
 });
@@ -12,7 +12,7 @@ const getHabits = asyncHandler(async (req, res) => {
 //@description     Fetch single Note
 //@route           GET /api/notes/:id
 //@access          Public
-const getHabitById = asyncHandler(async (req, res) => {
+export const getHabitById = asyncHandler(async (req, res) => {
   const habit = await Habit.findById(req.params.id);
 
   if (habit) {
@@ -27,25 +27,28 @@ const getHabitById = asyncHandler(async (req, res) => {
 //@description     Create single Note
 //@route           GET /api/notes/create
 //@access          Private
-const CreateHabit = asyncHandler(async (req, res) => {
+export const createHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted  } = req.body;
 
-  /*if (!habitName || !datesCompleted) {
-    res.status(400);
-    throw new Error("Please Fill all the feilds");
-    return;
-  } else {*/
+   if(!habitName){
+    res.status(400)
+    throw new Error('Please enter a habit')
+   }
+   else{
     const habit = new Habit({ user: req.user._id, habitName, datesCompleted });
 
     const createdHabit = await habit.save();
 
     res.status(201).json(createdHabit);
+
+   }
+   
 });
 
 //@description     Delete single Note
 //@route           GET /api/notes/:id
 //@access          Private
-const DeleteHabit = asyncHandler(async (req, res) => {
+export const DeleteHabit = asyncHandler(async (req, res) => {
   const habit = await habit.findById(req.params.id);
 
   if (habit.user.toString() !== req.user._id.toString()) {
@@ -65,7 +68,7 @@ const DeleteHabit = asyncHandler(async (req, res) => {
 // @desc    Update a note
 // @route   PUT /api/notes/:id
 // @access  Private
-const UpdateHabit = asyncHandler(async (req, res) => {
+export const UpdateHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted } = req.body;
 
   const habit = await Habit.findById(req.params.id);
@@ -87,5 +90,3 @@ const UpdateHabit = asyncHandler(async (req, res) => {
     throw new Error("habit not found");
   }
 });
-
-export { getHabitById, getHabits, CreateHabit, DeleteHabit, UpdateHabit };
