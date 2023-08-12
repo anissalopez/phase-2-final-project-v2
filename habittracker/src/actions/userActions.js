@@ -12,7 +12,7 @@ import {
   } from "../constants/userConstants";
   import axios from "axios";
   
-  export const login = (email, password) => async (dispatch) => {
+  const login = (email, password) => async (dispatch) => {
     try {
       dispatch({ type: USER_LOGIN_REQUEST });
   
@@ -42,12 +42,12 @@ import {
     }
   };
   
-  export const logout = () => async (dispatch) => {
+  const logout = () => async (dispatch) => {
     localStorage.removeItem("userInfo");
     dispatch({ type: USER_LOGOUT });
   };
   
-  export const register = (name, email, password ) => async (dispatch) => {
+  const register = (name, email, password ) => async (dispatch) => {
     try {
       dispatch({ type: USER_REGISTER_REQUEST });
   
@@ -79,7 +79,7 @@ import {
     }
   };
   
-  export const updateProfile = (user) => async (dispatch, getState) => {
+  const updateProfile = (user) => async (dispatch, getState) => {
     try {
       dispatch({ type: USER_UPDATE_REQUEST });
   
@@ -111,3 +111,5 @@ import {
       });
     }
   };
+
+  export { login, logout, updateProfile, register}

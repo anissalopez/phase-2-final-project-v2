@@ -1,12 +1,11 @@
 import React from "react";
-import Habit from "./Habit";
 import { Table, Container } from "react-bootstrap";
 import {format, startOfWeek, addDays} from "date-fns";
 import DateHeader from "./Header";
-import { useNavigate } from "react-router-dom";
 
-function HabitContainer({changeWeek, habits, updateWeekDay, removeHabit, activeDay, updateCompletedHabits}){
-  const navigate = useNavigate();
+function HabitContainer({changeWeek, habits, activeDay }){
+
+
   const renderWeekDays = () => {
     let week = [];
     const startDate = startOfWeek(activeDay, { weekStartsOn: 1 });
@@ -18,18 +17,8 @@ function HabitContainer({changeWeek, habits, updateWeekDay, removeHabit, activeD
   };
 
   
-  
-  
-  function userDisplay(user){
-    console.log(user)
-
-    if(user.habit === 'undefined'){
-      alert('please add habits')
-      navigate('/AddHabit')
-    }
-  }
-
  
+//figure out why changeweek is not displaying 
 
 
 
@@ -53,10 +42,9 @@ function HabitContainer({changeWeek, habits, updateWeekDay, removeHabit, activeD
                     </tr>
                 </thead>
                 <tbody>
-               {userDisplay(habits)}
                 </tbody>
                 </Table>
-                <>{changeWeek()}</>
+              {changeWeek()}
         </Container>   
       </>
     );

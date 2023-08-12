@@ -1,9 +1,9 @@
 body{
-  min-height: 100vh;
+
   display: grid;
 }
 
-#formContainer{
+.formContainer{
   place-items: center center;
 }
 

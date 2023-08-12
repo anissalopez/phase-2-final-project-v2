@@ -2,10 +2,6 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModels.js";
 import generateToken from "../Utils/generateToken.js";
 
-
-//authorizing users && making POST request to data/users
-
-
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
   

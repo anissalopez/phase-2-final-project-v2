@@ -6,28 +6,32 @@ import { Container, Nav, NavDropdown, Navbar} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {FaCalendar, FaPlus} from 'react-icons/fa';
 import { BsHouse, BsPerson, BsBarChartFill } from 'react-icons/bs';
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function Navigation() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  console.log(userInfo)
+
 
   const logoutHandler = () => {
     dispatch(logout());
+    navigate("/home")
+    
   };
 
-  useEffect(() => {}, [userInfo]);
+
 
   return (
-      <Container fluid className="d-grid ">
+      <Container fluid className="d-grid mb-5 pb-5">
         <Navbar fixed="top" bg="primary">
-            <Navbar.Brand className="col text-white"href="/Habits">
+            <Navbar.Brand className="col text-white"href="/">
             <BsHouse className="navIcon " style={{color: "#ffffff",}} />
               Home
             </Navbar.Brand>
@@ -35,7 +39,7 @@ export default function Navigation() {
               <Nav.Link  className="navText col-md-auto text-white"href="/addhabit">
               <FaPlus className="navIcon"  style={{color: "#ffffff",}} />
               </Nav.Link>
-              <Nav.Link className="navText col-md-auto text-white" href="/weekdata">
+              <Nav.Link className="navText col-md-auto text-white" href="/habits">
               <BsBarChartFill className="navIcon"  style={{color: "#ffffff",}} />
               </Nav.Link>
               <Nav.Link  className="navText col-md-auto text-white"href="/monthlydata">
@@ -43,7 +47,10 @@ export default function Navigation() {
               </Nav.Link>
               </Nav>
                 {userInfo ? ( <NavDropdown>
-                   <NavDropdown.Item onClick={logoutHandler}>
+                  <NavDropdown.Item href="/profile">
+                   Profile
+                 </NavDropdown.Item>
+                 <NavDropdown.Item onClick={logoutHandler}>
                    Logout
                  </NavDropdown.Item>
                  </NavDropdown>
