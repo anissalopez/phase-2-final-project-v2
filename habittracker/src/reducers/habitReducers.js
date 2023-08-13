@@ -15,8 +15,6 @@ import {
   
   export const habitListReducer = (state = { habits: [] }, action) => {
     switch (action.type) {
-      case HABITS_LIST_REQUEST:
-        return { loading: true };
       case HABITS_LIST_SUCCESS:
         return { loading: false, habits: action.payload };
       case HABITS_LIST_FAIL:
@@ -62,7 +60,6 @@ import {
         return { loading: false, success: true };
       case HABITS_UPDATE_FAIL:
         return { loading: false, error: action.payload, success: false };
-  
       default:
         return state;
     }
