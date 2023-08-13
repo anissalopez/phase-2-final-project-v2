@@ -68,7 +68,7 @@ export const DeleteHabit = asyncHandler(async (req, res) => {
 // @desc    Update a note
 // @route   PUT /api/notes/:id
 // @access  Private
-export const UpdateHabit = asyncHandler(async (req, res) => {
+export const updateHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted } = req.body;
 
   const habit = await Habit.findById(req.params.id);
@@ -79,7 +79,7 @@ export const UpdateHabit = asyncHandler(async (req, res) => {
   }
 
   if (habit) {
-    habit.habitName = habitName
+    habit.datesCompleted = datesCompleted
 
 
     const updatedHabit = await habit.save();
