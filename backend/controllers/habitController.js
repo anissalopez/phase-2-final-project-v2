@@ -2,7 +2,7 @@ import Habit  from "../models/habitModels.js"
 import asyncHandler from "express-async-handler";
 
 // @desc    Get logged in user notes
-// @route   GET /api/notes
+// @route   GET /data/habits
 // @access  Private
 export const getHabits = asyncHandler(async (req, res) => {
   const habits = await Habit.find({ user: req.user._id });
@@ -10,7 +10,7 @@ export const getHabits = asyncHandler(async (req, res) => {
 });
 
 //@description     Fetch single Note
-//@route           GET /api/notes/:id
+//@route           GET /data/habits/:id
 //@access          Public
 export const getHabitById = asyncHandler(async (req, res) => {
   const habit = await Habit.findById(req.params.id);
@@ -25,7 +25,7 @@ export const getHabitById = asyncHandler(async (req, res) => {
 });
 
 //@description     Create single Note
-//@route           GET /api/notes/create
+//@route           GET /data//create
 //@access          Private
 export const createHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted  } = req.body;
@@ -46,7 +46,7 @@ export const createHabit = asyncHandler(async (req, res) => {
 });
 
 //@description     Delete single Note
-//@route           GET /api/notes/:id
+//@route           GET /data/habits/:id
 //@access          Private
 export const DeleteHabit = asyncHandler(async (req, res) => {
   const habit = await habit.findById(req.params.id);
