@@ -10,6 +10,7 @@ import MonthlyData from "./MonthlyData";
 import Signup from "./Signup";
 import Login from "./Login";
 import Home from "./Home";
+import { Container } from "react-bootstrap";
 
 
 
@@ -19,13 +20,13 @@ import Home from "./Home";
 function App() {
     const [activeDay, setActiveDay] = useState(new Date());
     
-  
+    let iconStyles = { color: "black", fontSize: "3em" };
 
     const changeWeek = () => {
       return (
-          <div className="row mb-5">
+          <div className="row">
             <div className= "col" onClick={() => changeWeekHandle("prev")}><FaArrowLeft className= "leftArrow fa-pull-left" /></div>
-            <div className="col" onClick={() => changeWeekHandle("next")}><FaArrowRight className="rightArrow fa-pull-right" /></div>
+            <div className="col" onClick={() => changeWeekHandle("next")}><FaArrowRight  className="rightArrow fa-pull-right" /></div>
         </div>
      );
    };

@@ -39,7 +39,7 @@ function HabitContainer({changeWeek, activeDay }){
   const { success: successUpdate } = habitUpdate;
 
 
-  const deleteHandler = (id) => {
+  const handleDelete = (id) => {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteHabitAction(id));
     }
@@ -116,6 +116,7 @@ function HabitContainer({changeWeek, activeDay }){
                       <tr key={habit.Name}>
                       <td>{habit.habitName}</td>
                       {renderButtons(habit)}
+                      <td><button onClick={()=>handleDelete(habit._id)} className="btn btn-danger"><FaTrash  /></button></td>
                      </tr>)})}
                 </tbody>
                 </Table>
