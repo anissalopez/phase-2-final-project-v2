@@ -15,7 +15,6 @@ function Login(){
     const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.userLogin);
-
     const { loading, error, userInfo } = userLogin;
 
     useEffect(()=>{
@@ -24,22 +23,15 @@ function Login(){
         }
     }, [userInfo])
 
-
     const handleSubmit = (e) => {
-     e.preventDefault();
-     dispatch(login(email, password))
-     setEmail("");
-     setPassword("");
+        e.preventDefault();
+        dispatch(login(email, password))
+        setEmail("");
+        setPassword("");
     };
-
  
+    const newUserHandler = (e) => navigate('/signup');
     
-    function newUserHandler(e){
-        console.log(e)
-        navigate('/signup')
-    }
-
-
     return(
         <Container  className="mt-5 d-grid h-75 text-center formContainer">
          {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}  

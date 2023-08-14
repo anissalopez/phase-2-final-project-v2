@@ -2,7 +2,6 @@ import { Button, Container, Form }from 'react-bootstrap';
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createHabitAction } from "../actions/habitActions";
-import Loading from "./Loading";
 import ErrorMessage from './ErrorMessage';
 import { useNavigate } from "react-router-dom";
 
@@ -11,15 +10,13 @@ function AddHabit({ }){
     const [habitName, setHabitName] = useState("");
     const [datesCompleted, setDatesCompleted] = useState([]);
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
     const habitCreate = useSelector((state) => state.habitCreate);
-    const { loading, error, habit } = habitCreate;
+    const { error, habit } = habitCreate;
 
 
     const resetHandler = () => {
         setHabitName("");
-        setDatesCompleted([]);
     }
 
     const handleSubmit = (e) => {

@@ -42,7 +42,6 @@ export default function Navigation() {
             Home
           </Navbar.Brand>
           }
-          
             <Nav>
               <Nav.Link  className="navText col-md-auto text-white"href="/addhabit">
               <FaPlus className="navIcon"  style={{color: "#ffffff",}} />
@@ -51,16 +50,14 @@ export default function Navigation() {
               <FaCalendar className="navIcon" style={{color: "#ffffff",}} />
               </Nav.Link>
               </Nav>
-                {userInfo ? ( <NavDropdown>
-                 <NavDropdown.Item onClick={logoutHandler}>
+                {userInfo ? ( 
+                 <NavDropdown title={<BsPerson className="loginIcon" style={{color: "#ffffff",}} />} >
+                 <NavDropdown.Item className="mr-1" onClick={logoutHandler}>
                    Logout
                  </NavDropdown.Item>
                  </NavDropdown>
-                )  : null              
-               }
-              <Nav.Link  className="navText col-md-auto text-white "href="/login">
-              <BsPerson className="loginIcon" style={{color: "#ffffff",}} />
-              </Nav.Link>       
+                 )  : null                 
+               }    
         </Navbar>
       </Container>
   )

@@ -3,15 +3,7 @@ import { Spinner } from "react-bootstrap";
 
 function Loading({ size = 100 }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <div id="loading" >
       <Spinner
         style={{
           width: size,
@@ -21,6 +13,6 @@ function Loading({ size = 100 }) {
       />
     </div>
   );
-}
+};
 
 export default Loading;
