@@ -1,12 +1,15 @@
 import React from "react";
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import { Container, Row, Col} from "react-bootstrap";
 
 export default function ChangeDates({ dateHandler }){
 
     return (
-        <div className="row h-15 w-15 col">
-          <div className= "col" onClick={() => dateHandler("prev")}><FaArrowLeft className= "leftArrow"  /></div>
-          <div className="col" onClick={() => dateHandler("next")}><FaArrowRight  className="rightArrow" /></div>
-        </div>
+        <Container >
+        <Row>
+          <Col  onClick={() => dateHandler("prev")}><FaArrowLeft /></Col>
+          <Col  className='rightBtn' onClick={() => dateHandler("next")}><FaArrowRight/></Col>
+        </Row>
+        </Container>
     )
 };

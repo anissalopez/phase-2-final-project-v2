@@ -77,11 +77,13 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
         return <>{weekButtons}</> 
     }
 
+
+    console.log(addWeeks)
     const dateHandler = (btnName) => {
       if (btnName === "prev") {
         setActiveDay(subWeeks(activeDay, 1))
       }
-      else {
+      if(btnName === "next"){
         setActiveDay(addWeeks(activeDay, 1))
      };
     };
@@ -108,8 +110,8 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
                      </tr>)})}
                 </tbody>
              </Table>
-            <ChangeDates dateHandler={dateHandler}/>
         </Container>   
+        <ChangeDates dateHandler={dateHandler}/>
       </>
     );
 };
