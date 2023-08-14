@@ -32,7 +32,7 @@ function AddHabit({ }){
 
     return(
         <Container id="formContainer" className="d-grid h-75 mt-5">
-        <Form id="habitForm" className="text-center w-60 pt-5 mt-5" onSubmit={handleSubmit} >
+        <Form id="habitForm" className="text-center mt-5" onSubmit={handleSubmit} >
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
             <Form.Group>
             <Form.Label className="mb-4 fs-4">Add Habit</Form.Label>
