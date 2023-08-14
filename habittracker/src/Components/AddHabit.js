@@ -16,7 +16,6 @@ function AddHabit({ }){
     const habitCreate = useSelector((state) => state.habitCreate);
     const { loading, error, habit } = habitCreate;
 
-    console.log(habit)
 
     const resetHandler = () => {
         setHabitName("");

@@ -98,6 +98,7 @@ import {
       };
   
       const { data } = await axios.delete(`http://localhost:4000/data/habits/${id}`, config);
+      console.log(data)
   
       dispatch({
         type: HABITS_DELETE_SUCCESS,

@@ -18,7 +18,7 @@ function HabitContainer({changeWeek, activeDay }){
   const habitList = useSelector((state) => state.habitList );
   const habits = habitList.habits
 
-  console.log(habitList.habits)
+
 
   
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,11 +26,7 @@ function HabitContainer({changeWeek, activeDay }){
 
 
   const habitDelete = useSelector((state) => state.habitDelete);
-  const {
-    loading: loadingDelete,
-    error: errorDelete,
-    success: successDelete,
-  } = habitDelete;
+  const { error: errorDelete, success: successDelete} = habitDelete;
 
   const habitCreate = useSelector((state) => state.habitCreate);
   const { success: successCreate } = habitCreate;
@@ -39,7 +35,10 @@ function HabitContainer({changeWeek, activeDay }){
   const { success: successUpdate } = habitUpdate;
 
 
+
+
   const handleDelete = (id) => {
+    console.log(id)
     if (window.confirm("Are you sure?")) {
       dispatch(deleteHabitAction(id));
     }
@@ -47,7 +46,11 @@ function HabitContainer({changeWeek, activeDay }){
 
   useEffect(() => {
     dispatch(listHabits());
-  }, [userInfo]);
+    if(!userInfo){
+      navigate("/signup")
+    }
+  }, [navigate, userInfo, dispatch, habitUpdate, habitCreate, habitDelete]);
+  
 
   
 
@@ -61,12 +64,9 @@ function HabitContainer({changeWeek, activeDay }){
     return <>{week}</> 
   };
 
-  console.log(activeDay)
+
 
    function handleClick(habit, date){
-    console.log(date)
-
-
       habit.datesCompleted.push(date)
       dispatch(updateHabitAction(habit._id, habit.habitName, habit.datesCompleted))
     }
@@ -80,7 +80,7 @@ function HabitContainer({changeWeek, activeDay }){
      for(let day = 0; day < 7; day++){
       const formattedDate = format(addDays(currentDate, day), "MM dd yyyy");
   
-      weekButtons.push(<td key={day}><button className={ 
+      weekButtons.push(<td key={addDays(currentDate, day)}><button className={ 
         habit.datesCompleted.includes(formattedDate) ?
                         "btn btn-success" :
                         "btn btn-outline-primary custom"
@@ -113,7 +113,7 @@ function HabitContainer({changeWeek, activeDay }){
                 <tbody>
                 {habits.map((habit) => {
                     return(
-                      <tr key={habit.Name}>
+                      <tr key={habit.habitName}>
                       <td>{habit.habitName}</td>
                       {renderButtons(habit)}
                       <td><button onClick={()=>handleDelete(habit._id)} className="btn btn-danger"><FaTrash  /></button></td>

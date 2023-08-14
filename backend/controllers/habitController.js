@@ -18,9 +18,6 @@ export const getHabitById = asyncHandler(async (req, res) => {
    res.json(habit);
 });
 
-//@description     Create single Note
-//@route           GET /data//create
-//@access          Private
 export const createHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted  } = req.body;
 
@@ -36,19 +33,19 @@ export const createHabit = asyncHandler(async (req, res) => {
    
 });
 
-//@description     Delete single Note
-//@route           GET /data/habits/:id
-//@access          Private
-export const DeleteHabit = asyncHandler(async (req, res) => {
-  const habit = await habit.findById(req.params.id);
+
+export const deleteHabit = asyncHandler(async (req, res) => {
+  const habit = await Habit.findById(req.params.id);
 
   if (habit.user.toString() !== req.user._id.toString()) {
     res.status(401);
     throw new Error("You can't perform this action");
   }
+  console.log(habit)
 
   if (habit) {
-    await habit.remove();
+
+    await habit.deleteOne();
     res.json({ message: "habit deleted" });
   } else {
     res.status(404);
@@ -56,9 +53,6 @@ export const DeleteHabit = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update a note
-// @route   PUT /api/notes/:id
-// @access  Private
 export const updateHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted } = req.body;
 

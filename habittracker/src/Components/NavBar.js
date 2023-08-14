@@ -22,7 +22,7 @@ export default function Navigation() {
 
   const logoutHandler = () => {
     dispatch(logout());
-    navigate("/home")
+    navigate("/")
     
   };
 
@@ -31,25 +31,27 @@ export default function Navigation() {
   return (
       <Container fluid className="d-grid mb-5 pb-5">
         <Navbar fixed="top" bg="primary">
-            <Navbar.Brand className="col text-white"href="/">
-            <BsHouse className="navIcon " style={{color: "#ffffff",}} />
-              Home
-            </Navbar.Brand>
+          { userInfo ? (
+              <Navbar.Brand className="col text-white"href="/habits">
+              <BsHouse className="navIcon " style={{color: "#ffffff",}} />
+                Home
+              </Navbar.Brand>
+          ) :
+          <Navbar.Brand className="col text-white"href="/">
+          <BsHouse className="navIcon " style={{color: "#ffffff",}} />
+            Home
+          </Navbar.Brand>
+          }
+          
             <Nav>
               <Nav.Link  className="navText col-md-auto text-white"href="/addhabit">
               <FaPlus className="navIcon"  style={{color: "#ffffff",}} />
-              </Nav.Link>
-              <Nav.Link className="navText col-md-auto text-white" href="/habits">
-              <BsBarChartFill className="navIcon"  style={{color: "#ffffff",}} />
               </Nav.Link>
               <Nav.Link  className="navText col-md-auto text-white"href="/monthlydata">
               <FaCalendar className="navIcon" style={{color: "#ffffff",}} />
               </Nav.Link>
               </Nav>
                 {userInfo ? ( <NavDropdown>
-                  <NavDropdown.Item href="/profile">
-                   Profile
-                 </NavDropdown.Item>
                  <NavDropdown.Item onClick={logoutHandler}>
                    Logout
                  </NavDropdown.Item>
@@ -58,8 +60,7 @@ export default function Navigation() {
                }
               <Nav.Link  className="navText col-md-auto text-white "href="/login">
               <BsPerson className="loginIcon" style={{color: "#ffffff",}} />
-              </Nav.Link>
-          
+              </Nav.Link>       
         </Navbar>
       </Container>
   )

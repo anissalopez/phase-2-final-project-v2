@@ -28,7 +28,6 @@ function Login(){
     const handleSubmit = (e) => {
      e.preventDefault();
      dispatch(login(email, password))
-     navigate("/habits")
      setEmail("");
      setPassword("");
     };
