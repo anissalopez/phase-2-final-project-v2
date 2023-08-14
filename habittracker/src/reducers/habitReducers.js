@@ -15,10 +15,12 @@ import {
   
   export const habitListReducer = (state = { habits: [] }, action) => {
     switch (action.type) {
+      case HABITS_LIST_REQUEST:
+        return state;
       case HABITS_LIST_SUCCESS:
-        return { loading: false, habits: action.payload };
+        return {  habits: action.payload };
       case HABITS_LIST_FAIL:
-        return { loading: false, error: action.payload };
+        return { error: action.payload };
       default:
         return state;
     }
@@ -27,12 +29,11 @@ import {
   export const habitCreateReducer = (state = {}, action) => {
     switch (action.type) {
       case HABITS_CREATE_REQUEST:
-        return { loading: true };
+        return state;
       case HABITS_CREATE_SUCCESS:
-        return { loading: false, success: true };
+        return { success: true };
       case HABITS_CREATE_FAIL:
-        return { loading: false, error: action.payload };
-  
+        return { error: action.payload };
       default:
         return state;
     }
@@ -41,12 +42,11 @@ import {
   export const habitDeleteReducer = (state = {}, action) => {
     switch (action.type) {
       case HABITS_DELETE_REQUEST:
-        return { loading: true };
+        return state;
       case HABITS_DELETE_SUCCESS:
-        return { loading: false, success: true };
+        return { success: true };
       case HABITS_DELETE_FAIL:
-        return { loading: false, error: action.payload, success: false };
-  
+        return {  error: action.payload, success: false };
       default:
         return state;
     }
@@ -55,11 +55,11 @@ import {
   export const habitUpdateReducer = (state = {}, action) => {
     switch (action.type) {
       case HABITS_UPDATE_REQUEST:
-        return { loading: true };
+        return state; 
       case HABITS_UPDATE_SUCCESS:
-        return { loading: false, success: true };
+        return { success: true };
       case HABITS_UPDATE_FAIL:
-        return { loading: false, error: action.payload, success: false };
+        return { error: action.payload, success: false };
       default:
         return state;
     }

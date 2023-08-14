@@ -3,10 +3,11 @@ import { Table, Container } from "react-bootstrap";
 import {format, startOfWeek, addDays} from "date-fns";
 import DateHeader from "./Header";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteHabitAction, listHabits } from "../actions/habitActions"
+import { deleteHabitAction, listHabits, updateHabitAction } from "../actions/habitActions"
 import ErrorMessage from "./ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import { FaCheck, FaTrash } from 'react-icons/fa';
+
 
 
 
@@ -14,17 +15,15 @@ function HabitContainer({changeWeek, activeDay }){
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const habitList = useSelector((state) => state.habitList);
-  const { loading, error, habits} = habitList;
+  const habitList = useSelector((state) => state.habitList );
+  const habits = habitList.habits
 
-  console.log(habits)
+  console.log(habitList.habits)
 
   
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-    
- 
 
   const habitDelete = useSelector((state) => state.habitDelete);
   const {
@@ -48,8 +47,9 @@ function HabitContainer({changeWeek, activeDay }){
 
   useEffect(() => {
     dispatch(listHabits());
-  }, []);
+  }, [userInfo]);
 
+  
 
   const renderWeekDays = () => {
     let week = [];
@@ -61,11 +61,15 @@ function HabitContainer({changeWeek, activeDay }){
     return <>{week}</> 
   };
 
+  console.log(activeDay)
 
-function handleClick(date){
-  console.log(date)
-}
+   function handleClick(habit, date){
+    console.log(date)
 
+
+      habit.datesCompleted.push(date)
+      dispatch(updateHabitAction(habit._id, habit.habitName, habit.datesCompleted))
+    }
 
 
   const renderButtons = (habit) => {
@@ -74,10 +78,16 @@ function handleClick(date){
      let currentDate = startDate;
      
      for(let day = 0; day < 7; day++){
-      weekButtons.push(<td key={day}><button className={
-        habit.datesCompleted[addDays(currentDate, day)] ? "btn btn-success" : "btn btn-outline-primary custom"
-      }onClick={()=>handleClick(addDays(currentDate, day))}>
-         {habit.datesCompleted[addDays(currentDate, day)] ?  <FaCheck /> : null }
+      const formattedDate = format(addDays(currentDate, day), "MM dd yyyy");
+  
+      weekButtons.push(<td key={day}><button className={ 
+        habit.datesCompleted.includes(formattedDate) ?
+                        "btn btn-success" :
+                        "btn btn-outline-primary custom"
+                    }
+        
+      onClick={()=>handleClick(habit, format(addDays(currentDate, day), "MM dd yyyy"))}>
+         { habit.datesCompleted.includes(formattedDate) ?  <FaCheck /> : null }
         </button></td>);
       }
      return <>{weekButtons}</> 
@@ -101,7 +111,7 @@ function handleClick(date){
                     </tr>
                 </thead>
                 <tbody>
-                { habits.map((habit) => {
+                {habits.map((habit) => {
                     return(
                       <tr key={habit.Name}>
                       <td>{habit.habitName}</td>

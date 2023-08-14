@@ -1,27 +1,21 @@
 import Habit  from "../models/habitModels.js"
 import asyncHandler from "express-async-handler";
 
-// @desc    Get logged in user notes
-// @route   GET /data/habits
-// @access  Private
 export const getHabits = asyncHandler(async (req, res) => {
   const habits = await Habit.find({ user: req.user._id });
   res.json(habits);
 });
 
-//@description     Fetch single Note
-//@route           GET /data/habits/:id
-//@access          Public
 export const getHabitById = asyncHandler(async (req, res) => {
   const habit = await Habit.findById(req.params.id);
 
-  if (habit) {
-    res.json(habit);
-  } else {
-    res.status(404).json({ message: "habit not found" });
-  }
+    if (habit) {
+      res.json(habit);
+    } else {
+      res.status(404).json({ message: "habit not found" });
+    }
 
-  res.json(habit);
+   res.json(habit);
 });
 
 //@description     Create single Note
@@ -36,11 +30,8 @@ export const createHabit = asyncHandler(async (req, res) => {
    }
    else{
     const habit = new Habit({ user: req.user._id, habitName, datesCompleted });
-
     const createdHabit = await habit.save();
-
     res.status(201).json(createdHabit);
-
    }
    
 });
@@ -79,7 +70,8 @@ export const updateHabit = asyncHandler(async (req, res) => {
   }
 
   if (habit) {
-    habit.datesCompleted = datesCompleted
+    habit.datesCompleted = datesCompleted;
+    habit.habitName = habitName;
 
 
     const updatedHabit = await habit.save();

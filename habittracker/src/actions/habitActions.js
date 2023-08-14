@@ -15,43 +15,34 @@ import {
   import axios from "axios";
   
   export const listHabits = () => async (dispatch, getState) => {
-    try {
-      dispatch({
-        type: HABITS_LIST_REQUEST,
-      });
+    try {dispatch({ type: HABITS_LIST_REQUEST });
+        
+        const { userLogin: { userInfo } } = getState();
   
-      const {
-        userLogin: { userInfo },
-      } = getState();
+        const config = {
+            headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+            },
+        };
   
-      const config = {
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+
+        const { data } = await axios.get(`http://localhost:4000/data/habits`, config);
   
-      const { data } = await axios.get(`http://localhost:4000/data/habits`, config);
-  
-      dispatch({
-        type: HABITS_LIST_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
-      dispatch({
-        type: HABITS_LIST_FAIL,
-        payload: message,
-      });
-    }
+        dispatch({ type: HABITS_LIST_SUCCESS, payload: data});
+        } 
+      catch (error) {
+        const message =
+            error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({
+            type: HABITS_LIST_FAIL,
+            payload: message,
+        });
+      }
   };
   
-  export const createHabitAction = (habitName, datesCompleted) => async (
-    dispatch,
-    getState
-  ) => {
+  export const createHabitAction = (habitName, datesCompleted) => async (dispatch, getState) => {
     try {
       dispatch({
         type: HABITS_CREATE_REQUEST,
@@ -124,9 +115,7 @@ import {
     }
   };
   
-  export const updateHabitAction = (id, habitName, datesCompleted) => async (
-    dispatch,
-    getState
+  export const updateHabitAction = (id, habitName, datesCompleted) => async (dispatch, getState
   ) => {
     try {
       dispatch({
