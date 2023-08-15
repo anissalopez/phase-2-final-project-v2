@@ -18,16 +18,21 @@
   padding-top:70px;
 }
 
-
 .navIcon{
   margin-right:10px;
 }
 
-
+.offcanvas{
+  width: 200px;
+  height: 200px
+}  
 
 .signUp{
   margin-left: 10px
 }
+
+
+
 
 .loginIcon{
     border-radius: 50%;

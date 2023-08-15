@@ -84,7 +84,7 @@ function MonthlyData(){
         <>
         <DateHeader activeDay={activeDate}></DateHeader>
         <Container  className="d-grid pt-5">
-        <Table responsive size="sm" >
+        <Table size="sm" >
             <thead>
                  <tr>
                     <th>Habits</th>

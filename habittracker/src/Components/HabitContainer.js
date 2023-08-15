@@ -19,20 +19,19 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
     const { userInfo } = userLogin;
 
     const habitDelete = useSelector((state) => state.habitDelete);
-    
     const habitUpdate = useSelector((state) => state.habitUpdate);
   
 
     const handleDelete = (id) => {
       if (window.confirm("Are you sure?")) {
         dispatch(deleteHabitAction(id));
-      }
+      };
     };
 
     useEffect(() => {
       dispatch(listHabits());
       if(!userInfo){
-        navigate("/signup")
+        navigate("/signup");
       }
     }, [navigate, userInfo, dispatch, habitUpdate, habitDelete]);
     
@@ -47,8 +46,8 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
     };
 
     const handleClick = (habit, date) => {
-        habit.datesCompleted.push(date)
-        dispatch(updateHabitAction(habit._id, habit.habitName, habit.datesCompleted))
+        habit.datesCompleted.push(date);
+        dispatch(updateHabitAction(habit._id, habit.habitName, habit.datesCompleted));
       }
 
 
@@ -71,15 +70,14 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
                 {habit.datesCompleted.includes(formattedDate) ?  <FaCheck /> : null }
               </button>
             </td>);
-      }
+      };
         return <>{weekButtons}</> 
-    }
-
+    };
 
     const dateHandler = (btnName) => {
       if (btnName === "prev") {
         setActiveDay(subWeeks(activeDay, 1))
-      }
+      };
       if(btnName === "next"){
         setActiveDay(addWeeks(activeDay, 1))
      };

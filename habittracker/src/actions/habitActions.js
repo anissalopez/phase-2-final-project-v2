@@ -15,22 +15,21 @@ import {
   import axios from "axios";
   
   export const listHabits = () => async (dispatch, getState) => {
-    try {dispatch({ type: HABITS_LIST_REQUEST });
-        
+    try {
+      dispatch({ type: HABITS_LIST_REQUEST });
         const { userLogin: { userInfo } } = getState();
-  
         const config = {
             headers: {
             Authorization: `Bearer ${userInfo.token}`,
             },
         };
   
-
         const { data } = await axios.get(`/data/habits`, config);
-  
+
         dispatch({ type: HABITS_LIST_SUCCESS, payload: data});
-        } 
-      catch (error) {
+    } 
+
+    catch (error) {
         const message = 
             error.response && error.response.data.message
             ? error.response.data.message
@@ -39,7 +38,7 @@ import {
             type: HABITS_LIST_FAIL,
             payload: message,
         });
-      }
+      };
   };
   
   export const createHabitAction = (habitName, datesCompleted) => async (dispatch, getState) => {
@@ -68,7 +67,8 @@ import {
         type: HABITS_CREATE_SUCCESS,
         payload: data,
       });
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error)
       const message =
         error.response && error.response.data.message

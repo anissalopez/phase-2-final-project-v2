@@ -23,6 +23,6 @@ app.get("/", (req, res) => {
     res.send("API is running...")
 });
 
-const PORT = process.env.PORT  || 4000
+const PORT = process.env.PORT  || 5000
 
 app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)})
