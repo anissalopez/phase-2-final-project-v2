@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 
 function AddHabit({ }){
+
+   
     const [habitName, setHabitName] = useState("");
     const [datesCompleted, setDatesCompleted] = useState([]);
     const navigate = useNavigate();

@@ -32,24 +32,24 @@ export default function Navigation() {
           { userInfo ? (
             <Navbar fixed="top" bg="primary">
               <Navbar.Brand className="col text-white"href="/habits">
-                 <BsHouse className="navIcon " style={{color: "#ffffff",}} />
-                   Home
+                 <BsHouse className="navIcon" size={30} style={{color: "#ffffff",}} />
               </Navbar.Brand>
                 <Nav>
                   <Nav.Link  className="col-md-auto text-white"href="/addhabit">
-                    <FaPlus className="navIcon"  style={{color: "#ffffff",}} />
+                    <FaPlus size={15} className="navIcon"  style={{color: "#ffffff",}} />
                   </Nav.Link>
                   <Nav.Link  className=" col-md-auto text-white"href="/monthlydata">
-                    <FaCalendar  className="col-md-auto text-white" style={{color: "#ffffff",}} />
+                    <FaCalendar  size={15}className="col-md-auto text-white" style={{color: "#ffffff",}} />
                   </Nav.Link>
-                    <Button className="col-md-auto text-white pr-2">
-                    <BsPersonCircle size={20} onClick={handleShow} className="navIcon pt" style={{color: "#ffffff",}}/>
-                    </Button>
+                    <Container className="col-md-auto text-white pr-2">
+                    <BsPersonCircle size={30} onClick={handleShow} className="navIcon pt" style={{color: "#ffffff",}}/>
+                    </Container>
                 <Offcanvas show={show} onHide={handleClose} placement="end">
                   <Offcanvas.Body>
-                    <Nav>
-                    <Nav.Link className="offCanvasText"><CiLogout size={20} className = "offCanvasText mr-2" onClick={logoutHandler}/>Logout</Nav.Link>
-                    </Nav>
+                    <div onClick={logoutHandler}>
+                      <CiLogout size={20} className = "offCanvasText mr-2" onClick={logoutHandler}/>
+                      Logout
+                    </div>
                 </Offcanvas.Body>
               </Offcanvas>
 
