@@ -21,7 +21,7 @@ function Login(){
         if(userInfo){
             navigate("/habits")
         }
-    }, [userInfo])
+    }, [userInfo, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,10 +33,10 @@ function Login(){
     const newUserHandler = (e) => navigate('/signup');
     
     return(
-        <Container  className="mt-5 d-grid h-75 text-center formContainer">
+        <Container className="d-grid align-items-center justify-content-center text-center">
+        <h2 className="mt-5 mb-5">Login</h2> 
          {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}  
          {loading && <Loading />}
-        <h2 className="pt-5">Login</h2>
         <Form className="userForm"  onSubmit={handleSubmit}> 
             <InputGroup className="mb-2" size="md">
             <InputGroup.Text ><CiMail /></InputGroup.Text>
@@ -51,7 +51,7 @@ function Login(){
             </Button>
         </Form>
         <p>Don't have an account? <Button variant="secondary" onClick={newUserHandler}>Sign up</Button></p>
-        </Container>
+       </Container>
     );
 };
 

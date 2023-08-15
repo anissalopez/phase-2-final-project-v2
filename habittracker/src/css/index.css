@@ -1,8 +1,4 @@
-body{
-  display: grid;
-}
-
-.custom{
+.weekBtn{
   width: 39.8px;
   height: 37.81px;
 }
@@ -27,9 +23,7 @@ body{
   margin-right:10px;
 }
 
-.navText{
-  margin-right:10px;
-}
+
 
 .signUp{
   margin-left: 10px
@@ -53,7 +47,6 @@ body{
 .rightBtn{
   display: flex;
   justify-content: flex-end;
-
 }
 
 .userForm{

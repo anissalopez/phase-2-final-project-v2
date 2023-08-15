@@ -31,11 +31,11 @@ function AddHabit({ }){
   
 
     return(
-        <Container  className="d-grid h-75 mt-5 formContainer">
-        <Form id="habitForm" className="text-center mt-5" onSubmit={handleSubmit} >
+        <Container className="d-grid align-items-center justify-content-center text-center">
+        <h2 className="mt-5 mb-4">Add Habit</h2> 
+        <Form id="habitForm" className="text-center" onSubmit={handleSubmit} >
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
             <Form.Group>
-            <Form.Label className="mb-4 fs-4">Add Habit</Form.Label>
             <Form.Control className="mb-4" type="text" placeholder="please enter a habit" onChange={(e)=>setHabitName(e.target.value)}/>
             <Button variant="primary" type="submit">
             Submit

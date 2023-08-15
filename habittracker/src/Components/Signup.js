@@ -22,13 +22,12 @@ function Signup( ){
     const userRegister = useSelector((state) => state.userRegister);
     const { loading, error, userInfo } = userRegister;
 
-  useEffect(()=>{
-    if(userInfo){
-      navigate("/habits")
-    }
-  }, [userInfo])
+    useEffect(()=>{
+      if(userInfo){
+        navigate("/habits")
+      }
+    }, [userInfo, navigate])
 
- 
     const handleSubmit = (e) => {
        e.preventDefault();
        if(password.length < 8){
@@ -40,39 +39,34 @@ function Signup( ){
        setName("");
       };
 
-    const handleClick = () => navigate("/login")
-
-
+    const handleClick = () => navigate("/login");
 
     return(
-        <>
-        <NavBar ></NavBar>
-        <Container className="mt-5 d-grid h-75 formContainer">
-        <h2 className="pt-5 mb-3">Sign up</h2>
-        <Form className="userForm"  onSubmit={handleSubmit}> 
-        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-        {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
-        {loading && <Loading />}
-            <InputGroup className="mb-2" size="md" >
-            <InputGroup.Text ><BsPerson /></InputGroup.Text>
-            <Form.Control  autoComplete="on" type="username" value={name} placeholder="enter name" onChange={(e) => setName(e.target.value)} />
-            </InputGroup>  
-            <InputGroup className="mb-2" size="md" >
-            <InputGroup.Text ><CiMail /></InputGroup.Text>
-            <Form.Control type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </InputGroup>
-            <InputGroup className="mb-2" size="md" >
-            <InputGroup.Text ><CiLock /></InputGroup.Text>
-            <Form.Control  autoComplete="on" type="password" placeholder="minimum 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </InputGroup>
-            <Button variant="primary" className="mt-3 mb-2" type="submit">
-            Submit
-            </Button>
-        </Form>
-        <p>Have an account? <Button variant="secondary" onClick={handleClick}>Login</Button></p>
+      <Container className="d-grid align-items-center justify-content-center text-center">
+          <h2 className="mt-5 mb-5">Sign up</h2> 
+            <Form className="userForm"  onSubmit={handleSubmit}> 
+                {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+                {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+                {loading && <Loading />}
+                <InputGroup className="mb-2" size="md" >
+                  <InputGroup.Text ><BsPerson /></InputGroup.Text>
+                  <Form.Control  autoComplete="on" type="username" value={name} placeholder="enter name" onChange={(e) => setName(e.target.value)} />
+                </InputGroup>  
+                <InputGroup className="mb-2" size="md" >
+                  <InputGroup.Text ><CiMail /></InputGroup.Text>
+                  <Form.Control type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </InputGroup>
+                <InputGroup className="mb-2" size="md" >
+                  <InputGroup.Text ><CiLock /></InputGroup.Text>
+                  <Form.Control  autoComplete="on" type="password" placeholder="minimum 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </InputGroup>
+                  <Button variant="primary" className="mt-3 mb-2" type="submit">
+                  Submit
+                  </Button>
+            </Form>
+              <p>Have an account? <Button variant="secondary" onClick={handleClick}>Login</Button></p>
         </Container>
-        </>
     )
-}
+};
 
 export default Signup;

@@ -65,7 +65,7 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
                   className={ 
                     habit.datesCompleted.includes(formattedDate) ?
                     "btn btn-success" :
-                      "btn btn-outline-primary custom"
+                      "btn btn-outline-primary weekBtn"
                   }   
                   onClick={()=>handleClick(habit, format(addDays(currentDate, day), "MM dd yyyy"))}>
                 {habit.datesCompleted.includes(formattedDate) ?  <FaCheck /> : null }
@@ -88,7 +88,7 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
   return(
       <>
         <DateHeader activeDay={activeDay} isDate={false} text={null}/>
-        <Container id="habitContainer" className="d-grid pt-5">
+        <Container className="d-grid pt-5">
             <Table responsive>
                 <thead>
                     <tr>
