@@ -8,6 +8,7 @@ import ErrorMessage from "./ErrorMessage";
 import { register } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
+import Header from "./Header";
  
 function Signup( ){
     const navigate = useNavigate();
@@ -41,15 +42,17 @@ function Signup( ){
 
     const handleClick = () => navigate("/login")
 
+
+
     return(
         <>
         <NavBar ></NavBar>
-        <Container className="mt-5 d-grid h-75 text-center formContainer">
+        <Container className="mt-5 d-grid h-75 formContainer">
+        <h2 className="pt-5 mb-3">Sign up</h2>
+        <Form className="userForm"  onSubmit={handleSubmit}> 
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         {loading && <Loading />}
-        <h2 className="pt-5">Sign Up</h2>
-        <Form className="userForm"  onSubmit={handleSubmit}> 
             <InputGroup className="mb-2" size="md" >
             <InputGroup.Text ><BsPerson /></InputGroup.Text>
             <Form.Control  autoComplete="on" type="username" value={name} placeholder="enter name" onChange={(e) => setName(e.target.value)} />

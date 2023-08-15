@@ -2,10 +2,6 @@ body{
   display: grid;
 }
 
-#formContainer{
-  place-items: center center;
-}
-
 .custom{
   width: 39.8px;
   height: 37.81px;
@@ -59,6 +55,15 @@ body{
   justify-content: flex-end;
 
 }
+
+.userForm{
+  max-width: 350px;
+}
+
+.formContainer{
+  place-content: center;
+}
+
 
 
 

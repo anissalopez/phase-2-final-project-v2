@@ -31,7 +31,7 @@ function AddHabit({ }){
   
 
     return(
-        <Container id="formContainer" className="d-grid h-75 mt-5">
+        <Container  className="d-grid h-75 mt-5 formContainer">
         <Form id="habitForm" className="text-center mt-5" onSubmit={handleSubmit} >
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
             <Form.Group>

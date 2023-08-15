@@ -87,7 +87,7 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
       
   return(
       <>
-        <DateHeader activeDay={activeDay}/>
+        <DateHeader activeDay={activeDay} isDate={false} text={null}/>
         <Container id="habitContainer" className="d-grid pt-5">
             <Table responsive>
                 <thead>
