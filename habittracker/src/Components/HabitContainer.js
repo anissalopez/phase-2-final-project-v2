@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Table, Container } from "react-bootstrap";
-import {format, startOfWeek, addDays, subWeeks, addWeeks} from "date-fns";
+import {format, startOfWeek, addDays } from "date-fns";
 import DateHeader from "./Header";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAction, listHabits, updateHabitAction } from "../actions/habitActions"
@@ -15,15 +15,13 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
     const habitList = useSelector((state) => state.habitList );
     const habits = habitList.habits
 
-    
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
     const habitDelete = useSelector((state) => state.habitDelete);
-    const { error: errorDelete, success: successDelete} = habitDelete;
-
+    
     const habitUpdate = useSelector((state) => state.habitUpdate);
-    const { error: errorUpdate, success: successUpdate } = habitUpdate;
+  
 
     const handleDelete = (id) => {
       if (window.confirm("Are you sure?")) {
@@ -78,7 +76,6 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
     }
 
 
-    console.log(addWeeks)
     const dateHandler = (btnName) => {
       if (btnName === "prev") {
         setActiveDay(subWeeks(activeDay, 1))
@@ -101,13 +98,13 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
                     </tr>
                 </thead>
                 <tbody>
-                {habits.map((habit) => {
+                {habits ? habits.map((habit) => {
                     return(
                       <tr key={habit.habitName}>
                       <td>{habit.habitName}</td>
                       {renderButtons(habit)}
                       <td><button onClick={()=>handleDelete(habit._id)} className="btn btn-danger"><FaTrash  /></button></td>
-                     </tr>)})}
+                     </tr>)}) : null}
                 </tbody>
              </Table>
         </Container>   

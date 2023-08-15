@@ -2,6 +2,7 @@ import Habit  from "../models/habitModels.js"
 import asyncHandler from "express-async-handler";
 
 export const getHabits = asyncHandler(async (req, res) => {
+
   const habits = await Habit.find({ user: req.user._id });
   res.json(habits);
 });
@@ -20,6 +21,8 @@ export const getHabitById = asyncHandler(async (req, res) => {
 
 export const createHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted  } = req.body;
+
+  console.log(req)
 
    if(!habitName){
     res.status(400)

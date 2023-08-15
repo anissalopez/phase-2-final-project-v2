@@ -26,15 +26,15 @@ import {
         };
   
 
-        const { data } = await axios.get(`http://localhost:4000/data/habits`, config);
+        const { data } = await axios.get(`/data/habits`, config);
   
         dispatch({ type: HABITS_LIST_SUCCESS, payload: data});
         } 
       catch (error) {
-        const message =
+        const message = 
             error.response && error.response.data.message
             ? error.response.data.message
-            : error.message;
+           : error.message;
         dispatch({
             type: HABITS_LIST_FAIL,
             payload: message,
@@ -59,8 +59,7 @@ import {
         },
       };
   
-      const { data } = await axios.post(
-        `http://localhost:4000/data/habits/create`,
+      const { data } = await axios.post(`/data/habits/create`,
         { habitName, datesCompleted },
         config
       );
@@ -70,6 +69,7 @@ import {
         payload: data,
       });
     } catch (error) {
+      console.log(error)
       const message =
         error.response && error.response.data.message
           ? error.response.data.message
@@ -97,7 +97,7 @@ import {
         },
       };
   
-      const { data } = await axios.delete(`http://localhost:4000/data/habits/${id}`, config);
+      const { data } = await axios.delete(`/data/habits/${id}`, config);
       console.log(data)
   
       dispatch({
@@ -135,7 +135,7 @@ import {
       };
   
       const { data } = await axios.put(
-        `http://localhost:4000/data/habits/${id}`,
+        `/data/habits/${id}`,
         { habitName, datesCompleted },
         config
       );

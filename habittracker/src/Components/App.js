@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import {Routes, Route} from "react-router-dom";
-import {subWeeks, addWeeks} from "date-fns";
-import { FaArrowRight, FaArrowLeft} from 'react-icons/fa';
 import MonthlyData from "./MonthlyData";
 import Signup from "./Signup";
 import Login from "./Login";
 import Home from "./Home";
 import Navigation from "./NavBar";
-import WeekData from "./WeekData";
 import HabitForm from "./AddHabit";
 import HabitContainer from "./HabitContainer";
 
