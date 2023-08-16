@@ -13,16 +13,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/data/users', userRoutes)
-app.use('/data/habits', habitRoutes)
-app.use(notFound)
-app.use(errorHandler)
+app.use('/data/users', userRoutes);
+app.use('/data/habits', habitRoutes);
+app.use(notFound);
+app.use(errorHandler);
 
 
 app.get("/", (req, res) => {
-    res.send("API is running...")
+    res.send("API is running...");
 });
 
-const PORT = process.env.PORT  || 5000
+const PORT = process.env.PORT  || 5000;
 
-app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)})
+app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)});
