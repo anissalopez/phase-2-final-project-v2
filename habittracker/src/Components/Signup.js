@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {Form, Container, Button, InputGroup} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar"
 import { BsPerson } from "react-icons/bs";
 import { CiMail, CiLock } from "react-icons/ci";
 import ErrorMessage from "./ErrorMessage";
 import { register } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
-import Header from "./Header";
  
 function Signup( ){
     const navigate = useNavigate();
@@ -24,8 +22,8 @@ function Signup( ){
 
     useEffect(()=>{
       if(userInfo){
-        navigate("/habits")
-      }
+        navigate("/habits");
+      };
     }, [userInfo, navigate])
 
     const handleSubmit = (e) => {
@@ -34,9 +32,9 @@ function Signup( ){
         setMessage("please enter minimum of 8 characters")
        }
        else dispatch(register(name, email, password));
-       setEmail("");
-       setPassword("");
-       setName("");
+        setEmail("");
+        setPassword("");
+        setName("");
       };
 
     const handleClick = () => navigate("/login");

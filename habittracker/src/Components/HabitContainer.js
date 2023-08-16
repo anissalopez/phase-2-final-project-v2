@@ -3,7 +3,7 @@ import { Table, Container } from "react-bootstrap";
 import {format, startOfWeek, addDays } from "date-fns";
 import DateHeader from "./Header";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteHabitAction, listHabits, updateHabitAction } from "../actions/habitActions"
+import { deleteHabitAction, listHabits, updateHabitAction } from "../actions/habitActions";
 import { useNavigate } from "react-router-dom";
 import { FaCheck, FaTrash } from 'react-icons/fa';
 import ChangeDates from "./ChangeDates";
@@ -16,7 +16,7 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
     const habits = habitList.habits
 
     const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
+    const  userInfo  = userLogin;
 
     const habitDelete = useSelector((state) => state.habitDelete);
     const habitUpdate = useSelector((state) => state.habitUpdate);
@@ -48,7 +48,7 @@ function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
     const handleClick = (habit, date) => {
         habit.datesCompleted.push(date);
         dispatch(updateHabitAction(habit._id, habit.habitName, habit.datesCompleted));
-      }
+      };
 
 
     const renderButtons = (habit) => {

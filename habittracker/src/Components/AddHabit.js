@@ -8,18 +8,18 @@ import { useNavigate } from "react-router-dom";
 
 function AddHabit({ }){
 
-   
     const [habitName, setHabitName] = useState("");
     const [datesCompleted, setDatesCompleted] = useState([]);
+    
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const habitCreate = useSelector((state) => state.habitCreate);
-    const { error, habit } = habitCreate;
 
+    const habitCreate = useSelector((state) => state.habitCreate);
+    const { error } = habitCreate;
 
     const resetHandler = () => {
         setHabitName("");
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,9 +27,9 @@ function AddHabit({ }){
         if(!habitName) return;
         resetHandler();
         navigate("/habits")
-    }
+    };
 
-    useEffect(() => {}, [])
+    useEffect(() => {}, []);
   
 
     return(

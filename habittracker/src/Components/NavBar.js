@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-router-dom";
 import { logout } from "../actions/userActions";
+import { clearHabits } from "../actions/habitActions";
 import { Container, Nav, Button, Navbar, Offcanvas} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {FaCalendar, FaPlus } from 'react-icons/fa';
@@ -16,6 +17,7 @@ export default function Navigation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -24,7 +26,9 @@ export default function Navigation() {
 
   const logoutHandler = () => {
     dispatch(logout());
-    navigate("/signup")
+    dispatch(clearHabits());
+    navigate("/signup");
+    setShow(false);
   };
 
   return (
@@ -52,7 +56,6 @@ export default function Navigation() {
                     </div>
                 </Offcanvas.Body>
               </Offcanvas>
-
                 </Nav>
             </Navbar>    
           ) : (

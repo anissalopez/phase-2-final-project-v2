@@ -12,6 +12,7 @@ function MonthlyData(){
     const [activeDate, setActiveDate] = useState((new Date()));
     const endOfTheSelectedMonth = endOfMonth(activeDate);
     const startOfTheSelectedMonth = startOfMonth(activeDate);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ function MonthlyData(){
     const { userInfo } = userLogin;
 
     const habitList = useSelector((state) => state.habitList );
-    const habits = habitList.habits
+    const habits = habitList.habits;
 
 
     useEffect(() => {
@@ -27,7 +28,7 @@ function MonthlyData(){
         
         if(!userInfo){
           navigate("/signup")
-        }
+        };
       }, [userInfo, habitList]);
 
     const handleButtons = (habit) => {
@@ -74,7 +75,7 @@ function MonthlyData(){
         if (btnName === "prev") {
             setActiveDate(subMonths(activeDate, 1));
           };
-          if (btnName === "next") {
+        if (btnName === "next") {
             setActiveDate(addMonths(activeDate, 1));
           };
     };
