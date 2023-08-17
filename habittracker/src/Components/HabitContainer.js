@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Table, Container } from "react-bootstrap";
-import {format, startOfWeek, addDays } from "date-fns";
+import {format, startOfWeek, addDays, addWeeks, subWeeks } from "date-fns";
 import DateHeader from "./Header";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteHabitAction, listHabits, updateHabitAction } from "../actions/habitActions";
@@ -8,9 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { FaCheck, FaTrash } from 'react-icons/fa';
 import ChangeDates from "./ChangeDates";
 
-function HabitContainer({setActiveDay, activeDay,subWeeks,addWeeks }){
+function HabitContainer({ setActiveDay, activeDay  }){
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+  
 
     const habitList = useSelector((state) => state.habitList );
     const habits = habitList.habits
