@@ -42,7 +42,7 @@ import {
         return {  error: action.payload, success: false };
       default:
         return state;
-    }
+    };
   };
   
   export const habitUpdateReducer = (state = {}, action) => {
