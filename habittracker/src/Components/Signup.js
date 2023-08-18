@@ -31,6 +31,12 @@ function Signup( ){
        if(password.length < 8){
         setMessage("please enter minimum of 8 characters")
        }
+       if(!email){
+        setMessage("please enter a valid email")
+       }
+       if(!name){
+        setMessage("please enter your name")
+       }
        else dispatch(register(name, email, password));
         setEmail("");
         setPassword("");
