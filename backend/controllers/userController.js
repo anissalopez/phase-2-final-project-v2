@@ -46,7 +46,7 @@ const registerUser = asyncHandler (async (req, res) => {
 
     else {
     res.status(400);
-    throw new Error("User not found");
+    throw new Error("Invalid user data received");
   }
 });
 

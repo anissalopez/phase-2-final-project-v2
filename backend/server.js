@@ -18,11 +18,5 @@ app.use('/data/habits', habitRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-
-app.get("/", (req, res) => {
-    res.send("API is running...");
-});
-
 const PORT = process.env.PORT  || 5000;
-
-app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)});
+app.listen(PORT, ()=>{console.log(`app is listening on ${PORT}`)})

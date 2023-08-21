@@ -1,6 +1,7 @@
 import Habit  from "../models/habitModels.js"
 import asyncHandler from "express-async-handler";
 
+
 export const getHabits = asyncHandler(async (req, res) => {
   const habits = await Habit.find({ user: req.user._id });
   res.json(habits);
@@ -15,7 +16,7 @@ export const getHabitById = asyncHandler(async (req, res) => {
       res.status(404).json({ message: "habit not found" });
     };
 
-   res.json(habit);
+
 });
 
 export const createHabit = asyncHandler(async (req, res) => {
@@ -51,7 +52,7 @@ export const deleteHabit = asyncHandler(async (req, res) => {
 export const updateHabit = asyncHandler(async (req, res) => {
   const { habitName, datesCompleted } = req.body;
   const habit = await Habit.findById(req.params.id);
-  
+
   if (habit.user.toString() !== req.user._id.toString()) {
     res.status(401);
     throw new Error("You can't perform this action");
@@ -67,3 +68,4 @@ export const updateHabit = asyncHandler(async (req, res) => {
     throw new Error("habit not found");
   };
 });
+
